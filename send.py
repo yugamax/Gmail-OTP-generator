@@ -34,7 +34,7 @@ def gmail_authenticate():
 def create_message(to, subject, message_text):
     if subject ==  None:
         subject = ""
-    message = MIMEText(message_text)
+    message = MIMEText(message_text,"html")
     message['to'] = to
     message['subject'] = subject
     raw = base64.urlsafe_b64encode(message.as_bytes())
