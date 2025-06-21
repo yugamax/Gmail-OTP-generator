@@ -50,7 +50,7 @@ def send_message(service, user_id, message):
         return None
     
 @app.post("/sendmail")
-def send_email(email: EmailRequest):
+async def send_email(email: EmailRequest):
     try:
         service = gmail_authenticate()
         message = create_message(email.to, email.subject, email.message)
@@ -61,4 +61,5 @@ def send_email(email: EmailRequest):
             raise HTTPException(status_code=500, detail="Failed to send email")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
